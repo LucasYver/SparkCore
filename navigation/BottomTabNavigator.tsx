@@ -1,73 +1,133 @@
-import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import { useThemeColor } from '../components/Themed';
+import { title, widthSize } from '../constants';
+import HistoryScreen from '../screens/HistoryScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+import WalletScreen from '../screens/WalletScreen';
+import { BottomTabParamList, HistoryParamList, ProfileParamList, WalletParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
+  const useTheme = useThemeColor();
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+      initialRouteName='Wallet'
+      tabBarOptions={{
+        activeTintColor: useTheme.activeTint,
+        inactiveTintColor: useTheme.inactiveTint,
+        tabStyle: {
+          backgroundColor: useTheme.primary,
+        },
+      }}
+    >
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneNavigator}
+        component={WalletNavigator}
+        name='Wallet'
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name='university' color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
+        component={HistoryNavigator}
+        name='History'
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name='history' color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        component={ProfileNavigator}
+        name='Profile'
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name='user' color={color} />,
         }}
       />
     </BottomTab.Navigator>
   );
 }
 
-// You can explore the built-in icon families and icons on the web at:
-// https://icons.expo.fyi/
-function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
+function TabBarIcon(props: {
+  name: React.ComponentProps<typeof FontAwesome>['name'];
+  color: string;
+}) {
+  return <FontAwesome size={widthSize(20)} style={{ marginBottom: -3 }} {...props} />;
 }
 
-// Each tab has its own navigation stack, you can read more about this pattern here:
-// https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+const WalletStack = createStackNavigator<WalletParamList>();
 
-function TabOneNavigator() {
+function WalletNavigator() {
+  const useTheme = useThemeColor();
+
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+    <WalletStack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: useTheme.primary,
+        },
+        headerTitleStyle: {
+          color: 'white',
+        },
+      }}
+    >
+      <WalletStack.Screen
+        name='WalletScreen'
+        component={WalletScreen}
+        options={{ headerTitle: title }}
       />
-    </TabOneStack.Navigator>
+    </WalletStack.Navigator>
+  );
+}
+const HistoryStack = createStackNavigator<HistoryParamList>();
+
+function HistoryNavigator() {
+  const useTheme = useThemeColor();
+
+  return (
+    <HistoryStack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: useTheme.primary,
+        },
+        headerTitleStyle: {
+          color: 'white',
+        },
+      }}
+    >
+      <HistoryStack.Screen
+        name='HistoryScreen'
+        component={HistoryScreen}
+        options={{ headerTitle: title }}
+      />
+    </HistoryStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const ProfileStack = createStackNavigator<ProfileParamList>();
 
-function TabTwoNavigator() {
+function ProfileNavigator() {
+  const useTheme = useThemeColor();
+
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+    <ProfileStack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: useTheme.primary,
+        },
+        headerTitleStyle: {
+          color: 'white',
+        },
+      }}
+    >
+      <ProfileStack.Screen
+        name='ProfileScreen'
+        component={ProfileScreen}
+        options={{ headerTitle: title }}
       />
-    </TabTwoStack.Navigator>
+    </ProfileStack.Navigator>
   );
 }

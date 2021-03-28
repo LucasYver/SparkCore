@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import { Ionicons } from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
@@ -16,6 +17,7 @@ export default function useCachedResources() {
         await Font.loadAsync({
           ...Ionicons.font,
           'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),
+          't-regular': require('../assets/fonts/T_Regular.ttf'),
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
