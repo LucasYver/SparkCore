@@ -13,7 +13,7 @@ const Card = (props: cardType) => {
   const { height } = props;
   return (
     <View
-      style={[{ backgroundColor: useTheme.card, height: heightSize(height) }, styles.container]}
+      style={[styles.container, { backgroundColor: useTheme.card, minHeight: heightSize(height) }]}
       {...props}
     />
   );

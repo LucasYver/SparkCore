@@ -2,7 +2,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { heightSize, widthSize } from '../../constants';
+import { heightSize } from '../../constants';
 import { useThemeColor } from '../Themed';
 
 type CircleIconType = {
@@ -14,7 +14,7 @@ const CircleIcon: React.FC<CircleIconType> = ({ icon, color }) => {
   const useTheme = useThemeColor();
   return (
     <View style={[styles.container, { backgroundColor: color }]}>
-      <FontAwesome size={widthSize(10)} style={styles.icon} name={icon} color='#fff' />
+      <FontAwesome size={heightSize(11)} style={styles.icon} name={icon} color='#fff' />
     </View>
   );
 };
@@ -25,9 +25,9 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    height: heightSize(21),
-    width: heightSize(21),
-    borderRadius: heightSize(21 / 2),
+    height: heightSize(22),
+    width: heightSize(22),
+    borderRadius: heightSize(22) / 2,
   },
-  icon: { marginLeft: 1.5, marginBottom: 1 },
+  icon: { marginLeft: heightSize(2), marginBottom: heightSize(1) },
 });

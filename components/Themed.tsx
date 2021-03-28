@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    paddingHorizontal: widthSize(8),
-    paddingVertical: widthSize(8),
+    paddingHorizontal: widthSize(4),
   },
 });

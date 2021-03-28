@@ -23,7 +23,7 @@ const WalletCard: React.FC<WalletCardType> = ({ profitability }) => {
           {dayjs(profitability.date).format('YYYY')}
         </MonoText>
       </View>
-      <MonoText style={{ fontSize: fontSize.large }}>{profitability.value?.toFixed(2)}€</MonoText>
+      <MonoText style={{ fontSize: fontSize.large }}>{profitability.value?.toFixed(2)} €</MonoText>
       <View>
         <MonoText style={{ fontSize: fontSize.large, color: useTheme.green }}>
           {profitability.percent?.toFixed(2)}%

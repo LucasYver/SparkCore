@@ -19,7 +19,7 @@ const TransactionCard: React.FC<TransactionCardType> = ({ transaction }) => {
       <View style={styles.firstContainer}>
         <CircleIcon color={useTheme.burgundy} icon='university' />
         <View style={{ marginLeft: widthSize(30) }}>
-          <MonoText numberOfLines={1} ellipsizeMode='tail' style={{ fontSize: fontSize.medium }}>
+          <MonoText numberOfLines={1} ellipsizeMode='tail' style={{ fontSize: fontSize.large }}>
             {transaction.label}
           </MonoText>
           <MonoText style={{ fontSize: fontSize.medium, color: useTheme.grey }}>
@@ -28,7 +28,7 @@ const TransactionCard: React.FC<TransactionCardType> = ({ transaction }) => {
         </View>
       </View>
       <View style={styles.secondContainer}>
-        <MonoText style={{ fontSize: fontSize.medium }}>
+        <MonoText numberOfLines={1} style={{ fontSize: fontSize.large }}>
           {dayjs(transaction.date).format('D MMM YYYY')}
         </MonoText>
         <MonoText style={{ fontSize: fontSize.medium, color: useTheme.grey, textAlign: 'right' }}>

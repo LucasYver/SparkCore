@@ -16,6 +16,7 @@ export default {
     green,
     burgundy,
     orange,
+    summaryTitle: 'rgba(60,68,86,.7019607843137254)',
   },
   dark: {
     text: '#fff',
@@ -28,5 +29,6 @@ export default {
     green,
     burgundy,
     orange,
+    summaryTitle: 'rgba(60,68,86,.7019607843137254)',
   },
 };

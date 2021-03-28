@@ -6,6 +6,10 @@ import { useThemeColor } from './Themed';
 export function MonoText(props: Text['props']) {
   const useTheme = useThemeColor();
   return (
-    <Text {...props} style={[{ fontFamily: 'space-mono', color: useTheme.text }, props.style]} />
+    <Text
+      allowFontScaling={false}
+      {...props}
+      style={[{ fontFamily: 'space-mono', color: useTheme.text }, props.style]}
+    />
   );
 }
